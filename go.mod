@@ -1,6 +1,6 @@
 module github.com/fizzify/todoify
 
-go 1.16
+go 1.20.10
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
