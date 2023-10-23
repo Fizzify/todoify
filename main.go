@@ -70,6 +70,17 @@ func DisconnectMongo() error {
 	return err
 }
 
+func checkPort() string {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = ":3000"
+	} else {
+		port = ":" + port
+	}
+
+	return port
+}
+
 func main() {
 
 	err := SetupMongo()
@@ -142,11 +153,5 @@ func main() {
 		return c.Status(201).JSON(createdTodo)
 	})
 
-	port := os.Getenv("PORT")
-
-	if port == "" {
-		port = "3000"
-	}
-
-	log.Fatal(app.Listen("0.0.0.0:" + port))
+	log.Fatalln(app.Listen(checkPort()))
 }
