@@ -98,8 +98,6 @@ func main() {
 		Views: engine,
 	})
 
-	name := "John"
-
 	app.Get("/", func(c *fiber.Ctx) error {
 		filter := bson.D{}
 		cursor, err := mg.Collection("Todo").Find(c.Context(), filter)
