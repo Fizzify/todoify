@@ -151,12 +151,6 @@ func main() {
 		return c.Status(201).JSON(createdTodo)
 	})
 
-	app.Get("/thanks", func(c *fiber.Ctx) error {
-		return c.Render("thanks", fiber.Map{
-			"Name": name,
-		})
-	})
-
 	port := os.Getenv("PORT")
 
 	if port == "" {
