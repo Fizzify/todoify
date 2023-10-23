@@ -1,0 +1,34 @@
+{{ template "partials/header" . }}
+
+<main
+  class="text-white bg-neutral-800 h-screen w-full flex items-center justify-center flex-col"
+>
+  <h1 class="text-4xl font-bold">Todoify</h1>
+  <p class="my-4">A simple todo application written with HTMX.</p>
+  <form class="flex flex-col" hx-post="/">
+    <label for="todo">Todo</label>
+    <input
+      class="text-black py-1 px-4 outline-none border-none rounded-t-md"
+      type="text"
+      id="todo"
+      name="todo"
+      autocomplete="off"
+    />
+    <button
+      class="py-2 px-4 bg-blue-500 rounded-b-md hover:bg-blue-700"
+      type="submit"
+    >
+      Submit
+    </button>
+    <ul class="my-8" id="todos">
+      {{ range .Todos }}
+      <li class="flex items-center justify-between">
+        <p>{{.Todo}}</p>
+        <input type="checkbox" checked="{{.Done}}" />
+      </li>
+      {{ end }}
+    </ul>
+  </form>
+</main>
+
+{{ template "partials/footer" . }}
