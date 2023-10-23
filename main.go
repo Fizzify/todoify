@@ -7,7 +7,6 @@ import (
 	"github.com/fizzify/todoify/models"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
-	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -72,12 +71,6 @@ func DisconnectMongo() error {
 }
 
 func main() {
-
-	envErr := godotenv.Load(".env")
-	if envErr != nil {
-		fmt.Println("Could not load env file")
-		os.Exit(1)
-	}
 
 	err := SetupMongo()
 	if err != nil {
